@@ -81,6 +81,7 @@ buildTable();
 /*
 EXTRA CREDIT CHALLENGE (5 POINTS): Write a function that compares the list above with the list below, finds the players that made the All-State team, and displays a message with the results: "Congratulations to Springfield's 2018 North Carolina All-State honorees: ____." Display the message in a div below the table.
 Hint: You need two loops, one of which will be 'nested'.*/
+
 var allStars = [
   {
     first:'Melanie',
@@ -125,3 +126,29 @@ var allStars = [
   school: 'Springfield High School'
   }
 ];
+
+var html2 = '';
+//get the empty div area
+var congrats = document.getElementById('congrats');
+
+function findAllStars() {
+  //start with congratulations message
+  html2 += "Congratulations to Springfield's 2018 North Carolina All-State honorees:";
+
+  // select person from players array for comparison
+  for (i = 0; i < players.length; i++) {
+    // select person from allStars array for comparison
+    for (j = 0; j < allStars.length; j++) {
+      // compare the two people from the players and allStars arrays
+      if (players[i].first == allStars[j].first && players[i].last == allStars[j].last && players[i].position == allStars[j].position) {
+        // add player name to congrats message if a match
+        html2 += " " + allStars[j].first + " " + allStars[j].last;
+      }
+    }
+  }
+
+  // add congrats message to div area
+  congrats.innerHTML = html2;
+}
+
+findAllStars();
